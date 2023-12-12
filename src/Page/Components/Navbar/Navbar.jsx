@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import pdfFile from '../../../../public/Resume.pdf'
+import { scroller } from 'react-scroll';
 
 
 const Navbar = () => {
@@ -9,6 +11,14 @@ const Navbar = () => {
         link.download = 'Resume.pdf';
         link.click();
     }
+
+    const scrollToSection = (section) => {
+      scroller.scrollTo(section, {
+        duration: 800,
+        delay: 0,
+        smooth: 'easeInOutQuart',
+      });
+    };
   return (
     <div 
     className="navbar fixed z-10  bg-opacity-30 max-w-screen-xl text-white bg-black"
@@ -37,13 +47,19 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-slate-700 font-bold"
             >
               <li>
-                <a>Home</a>
+                <Link to="/" onClick={() => scrollToSection('home')}>Home</Link>
               </li>
               <li>
-                <a>About</a>
+              <Link to="/about" onClick={() => scrollToSection('about')}>About</Link>
               </li>
               <li>
-                <a>Contact me</a>
+              <Link to="/skills" onClick={() => scrollToSection('skills')}>Skills</Link>
+              </li>
+              <li>
+              <Link to="/projects" onClick={() => scrollToSection('projects')}>Projects</Link>
+              </li>
+              <li>
+              <Link to="/contact" onClick={() => scrollToSection('contact')}>Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -51,15 +67,21 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-slate-700 font-bold">
-            <li>
-              <a>Home</a>
-            </li>
-            <li>
-              <a href="">About</a>
-            </li>
-            <li>
-              <a>Contact me</a>
-            </li>
+          <li>
+                <Link to="/" onClick={() => scrollToSection('home')}>Home</Link>
+              </li>
+              <li>
+              <Link to="/about" onClick={() => scrollToSection('about')}>About</Link>
+              </li>
+              <li>
+              <Link to="/skills" onClick={() => scrollToSection('skills')}>Skills</Link>
+              </li>
+              <li>
+              <Link to="/projects" onClick={() => scrollToSection('projects')}>Projects</Link>
+              </li>
+              <li>
+              <Link to="/contact" onClick={() => scrollToSection('contact')}>Contact Us</Link>
+              </li>
           </ul>
         </div>
         <div className="navbar-end">
